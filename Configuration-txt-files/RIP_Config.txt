@@ -1,0 +1,44 @@
+Sun Jul 26 16:06:42 2020   Router0   Router>en
+Sun Jul 26 16:06:44 2020   Router0   Router#conf t
+Sun Jul 26 16:06:46 2020   Router0   Router(config)#int f0/0
+Sun Jul 26 16:07:00 2020   Router0   Router(config-if)#ip address 172.16.0.1 255.255.252.0
+Sun Jul 26 16:07:02 2020   Router0   Router(config-if)#no shutdown 
+Sun Jul 26 16:07:03 2020   Router0   Router(config-if)#exit
+Sun Jul 26 16:07:08 2020   Router0   Router(config)#int s0/0/0
+Sun Jul 26 16:07:13 2020   Router0   Router(config-if)#clock rate 64000
+Sun Jul 26 16:07:15 2020   Router0   Router(config-if)#bandwidth 64
+Sun Jul 26 16:07:24 2020   Router0   Router(config-if)#ip address 200.0.0.1 255.255.255.252
+Sun Jul 26 16:07:26 2020   Router0   Router(config-if)#no shutdown 
+Sun Jul 26 16:07:28 2020   Router0   Router(config-if)#exit
+Sun Jul 26 16:07:35 2020   Router1   Router>en
+Sun Jul 26 16:07:36 2020   Router1   Router#conf t
+Sun Jul 26 16:07:38 2020   Router1   Router(config)#int f0/0
+Sun Jul 26 16:07:47 2020   Router1   Router(config-if)#ip address 172.16.4.1 255.255.254.0
+Sun Jul 26 16:07:48 2020   Router1   Router(config-if)#no shutdown 
+Sun Jul 26 16:07:50 2020   Router1   Router(config-if)#exit
+Sun Jul 26 16:07:53 2020   Router1   Router(config)#int s0/0/0
+Sun Jul 26 16:08:04 2020   Router1   Router(config-if)#ip address 200.0.0.2 255.255.255.252
+Sun Jul 26 16:08:06 2020   Router1   Router(config-if)#no shutdown 
+Sun Jul 26 16:08:07 2020   Router1   Router(config-if)#exit
+Sun Jul 26 16:16:21 2020   Router0   Router(config)#do show ip route
+Sun Jul 26 16:16:36 2020   Router1   Router(config)#do show ip route
+Sun Jul 26 16:17:16 2020   Router0   Router(config)#router rip
+Sun Jul 26 16:17:47 2020   Router0   Router(config-router)#version 2
+Sun Jul 26 16:18:40 2020   Router0   Router(config-router)#network 172.16.0.0
+Sun Jul 26 16:18:49 2020   Router0   Router(config-router)#network 200.0.0.0
+Sun Jul 26 16:19:02 2020   Router0   Router(config-router)#no auto-summary 
+Sun Jul 26 16:22:42 2020   Router0   Router(config-router)#exit
+Sun Jul 26 16:23:35 2020   Router1   Router(config)#router rip
+Sun Jul 26 16:23:39 2020   Router1   Router(config-router)#version 2
+Sun Jul 26 16:23:46 2020   Router1   Router(config-router)#network 172.16.4.0
+Sun Jul 26 16:23:50 2020   Router1   Router(config-router)#network 200.0.0.0
+Sun Jul 26 16:23:53 2020   Router1   Router(config-router)#no auto-summary 
+Sun Jul 26 16:23:55 2020   Router1   Router(config-router)#exit
+Sun Jul 26 16:25:11 2020   Router0   Router(config)#do show ip route
+Sun Jul 26 16:27:18 2020   Router1   Router(config)#exit
+Sun Jul 26 16:27:22 2020   Router1   Router#show ip route
+Sun Jul 26 16:29:38 2020   Router1   Router#show ip protocols
+Sun Jul 26 16:30:37 2020   Router1   Router#show running-config 
+Sun Jul 26 16:31:35 2020   Router1   Router#show ip rip database
+Sun Jul 26 16:32:28 2020   Router1   Router#debug ip rip
+Sun Jul 26 16:33:30 2020   Router1   Router#no debug all
